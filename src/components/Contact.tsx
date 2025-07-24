@@ -16,15 +16,43 @@ const Contact = () => {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Simulação de envio
-    toast({
-      title: "Mensagem enviada!",
-      description: "Obrigado pelo contato. Retornarei em breve!",
+
+   const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("https://formspree.io/f/xjkowvgo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message
+      })
     });
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
+
+    if (response.ok) {
+      toast({
+        title: "Mensagem enviada com sucesso!",
+        description: "Entrarei em contato em breve.",
+      });
+
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } else {
+      throw new Error("Erro ao enviar o formulário");
+    }
+  } catch (error) {
+    console.error('Erro:', error);
+    toast({
+      title: "Erro ao enviar mensagem",
+      description: "Por favor, tente novamente ou envie um e-mail direto.",
+      variant: "destructive"
+    });
+  }
+};
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
@@ -37,19 +65,19 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "contato@email.com",
-      href: "mailto:contato@email.com"
+      value: "Tainan56.tss@gmail.com",
+      href: "mailto:Tainan56.tss@gmail.com"
     },
     {
       icon: Phone,
       title: "Telefone",
-      value: "+55 (11) 99999-9999",
-      href: "tel:+5511999999999"
+      value: "+55 (71) 99917-9678",
+      href: "tel:+5571999179678"
     },
     {
       icon: MapPin,
       title: "Localização",
-      value: "São Paulo, Brasil",
+      value: "Bahia, Brasil",
       href: "#"
     }
   ];
@@ -58,19 +86,19 @@ const Contact = () => {
     {
       icon: Github,
       name: "GitHub",
-      href: "https://github.com",
+      href: "https://github.com/NaanArmaX",
       color: "hover:text-gray-900"
     },
     {
       icon: Linkedin,
       name: "LinkedIn",
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/in/tain%C3%A3-dos-santos-silva/",
       color: "hover:text-blue-600"
     },
     {
       icon: Mail,
       name: "Email",
-      href: "mailto:contato@email.com",
+      href: "mailto:Tainan56.tss@gmail.com",
       color: "hover:text-red-500"
     }
   ];

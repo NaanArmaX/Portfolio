@@ -50,7 +50,7 @@ const Navigation = () => {
               onClick={() => scrollToSection("home")}
               className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent cursor-pointer hover:scale-105 transition-transform"
             >
-              Portfolio
+              Tainã Silva
             </div>
 
             {/* Desktop Menu */}
@@ -66,12 +66,18 @@ const Navigation = () => {
                   {item.label}
                 </button>
               ))}
+              <a
+              href="https://www.linkedin.com/in/tainã-dos-santos-silva/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button variant="gradient" size="sm">
                 Contratar
               </Button>
+            </a>
             </div>
 
-            {/* Mobile Menu Button */}
+            
             <Button
               variant="ghost"
               size="sm"
@@ -84,7 +90,7 @@ const Navigation = () => {
         </div>
       </nav>
 
-      {/* Mobile Navigation */}
+     
       {isOpen && (
         <div className="fixed inset-0 z-50 md:hidden">
           <div className="fixed inset-0 bg-background/95 backdrop-blur-md" onClick={() => setIsOpen(false)} />
@@ -118,16 +124,22 @@ const Navigation = () => {
               })}
               
               <div className="pt-4 border-t border-border/50">
-                <Button variant="gradient" className="w-full">
-                  Contratar
-                </Button>
+                <a
+  href="https://www.linkedin.com/in/tainã-dos-santos-silva/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Button variant="gradient" className="w-full">
+    Contratar
+  </Button>
+</a>
               </div>
             </div>
           </div>
         </div>
       )}
 
-      {/* Floating Action Button for Mobile */}
+     
       <div className="fixed bottom-6 right-6 z-40 md:hidden">
         <Button
           variant="gradient"
